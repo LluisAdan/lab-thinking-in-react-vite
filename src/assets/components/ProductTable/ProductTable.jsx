@@ -3,7 +3,7 @@ import ProductRow from '../ProductRow/ProductRow';
 import jsonData from '../../../data/data.json';
 import { useState } from 'react';
 
-function ProductTable() {
+function ProductTable({filteredProducts}) {
   const [products, setProducts] = useState(jsonData);
 
   return (
@@ -17,8 +17,8 @@ function ProductTable() {
         </thead>
 
         <tbody>
-          {products.map((product) => (
-            <ProductRow key={product.id} product={product} />
+          {filteredProducts.map(product => (
+            <ProductRow key={product.id} product={product} inStock={product.inStock} />
           ))}
         </tbody>
       </table>
